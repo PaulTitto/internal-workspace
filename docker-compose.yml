@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: jiravue-backend
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    env_file:
+      - ./backend/.env
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=sqlite:////app/instance/jiravue.db
+      - FRONTEND_URL=http://localhost:5173
+    volumes:
+      # Persistent volume for SQLite database
+      - backend-data:/app/instance
+    networks:
+      - jiravue-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_FLASK_API_URL=http://localhost:5001/api/v1
+    container_name: jiravue-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    networks:
+      - jiravue-network
+
+volumes:
+  backend-data:
+    name: jiravue_backend_data
+
+networks:
+  jiravue-network:
+    name: jiravue_network

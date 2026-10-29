@@ -149,6 +149,54 @@ npm run build
 
 ---
 
+### 3. Menjalankan dengan Docker & Docker Compose (Instan)
+
+Jika Anda sudah menginstal **Docker** & **Docker Compose**, seluruh aplikasi (Frontend + Backend + Database) dapat dijalankan dengan 1 perintah tanpa perlu menginstal Python atau Node.js di komputer:
+
+```bash
+# 1. Pastikan file backend/.env sudah ada
+cp backend/.env.example backend/.env
+
+# 2. Build dan jalankan seluruh container
+docker compose up --build -d
+
+# 3. Cek status container yang berjalan
+docker compose ps
+
+# 4. Melihat log realtime
+docker compose logs -f
+```
+
+- **Frontend**: `http://localhost:5173` (dilayani oleh Nginx produksi)
+- **Backend API**: `http://localhost:5001/api/v1` (dilayani oleh Gunicorn WSGI)
+- **Data SQLite**: Tersimpan aman dan persisten di volume Docker `jiravue_backend_data`.
+
+Untuk menghentikan container:
+```bash
+docker compose down
+```
+
+---
+
+## 🐳 Mengunggah Image ke Docker Hub (Publish to Docker Hub)
+
+Untuk mengunggah image container aplikasi ke **Docker Hub** agar dapat di-deploy di VPS / server mana pun:
+
+```bash
+# 1. Login ke Docker Hub
+docker login
+
+# 2. Build image backend & frontend dengan tag username Docker Hub Anda
+docker build -t USERNAME/jiravue-backend:latest ./backend
+docker build -t USERNAME/jiravue-frontend:latest ./frontend
+
+# 3. Unggah (Push) ke Docker Hub
+docker push USERNAME/jiravue-backend:latest
+docker push USERNAME/jiravue-frontend:latest
+```
+
+---
+
 ## 🔒 Konfigurasi Microsoft Entra ID (Azure Portal)
 
 1. Buka [Azure Portal](https://portal.azure.com/) → **Microsoft Entra ID** → **App registrations** → **New registration**.

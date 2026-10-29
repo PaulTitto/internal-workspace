@@ -7,6 +7,8 @@ PyJWT[crypto]==2.8.0
 msal==1.28.0
 google-genai==0.3.0
 python-dotenv==1.0.1
+requests==2.32.3
+gunicorn==22.0.0
 # Driver SQLite sudah bawaan stdlib Python (sqlite3) — tidak butuh paket tambahan.
 # Jika suatu saat kembali ke server DB, tambahkan salah satu:
 # psycopg2-binary==2.9.9   (PostgreSQL)
