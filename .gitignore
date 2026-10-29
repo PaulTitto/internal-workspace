@@ -1,0 +1,67 @@
+# ==========================================
+# 1. Environment & Rahasia Kredensial (SANGAT PENTING)
+# ==========================================
+.env
+.env.local
+.env.*.local
+*.env
+*.pem
+*.key
+*.cert
+
+# Kecualikan file template / contoh agar aman diunggah
+!.env.example
+
+# ==========================================
+# 2. Database & Data Lokal
+# ==========================================
+instance/
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# ==========================================
+# 3. Python Virtual Environment & Cache
+# ==========================================
+venv/
+.venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+.pytest_cache/
+
+# ==========================================
+# 4. Node.js & Frontend Build Outputs
+# ==========================================
+node_modules/
+dist/
+dist-ssr/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.vite/
+
+# ==========================================
+# 5. IDE, Editor & File Sistem OS
+# ==========================================
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==========================================
+# 6. File Skrip Sementara / Duplikat
+# ==========================================
+setup_fullstack_project (1).py

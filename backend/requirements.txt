@@ -1,0 +1,13 @@
+Flask==3.0.3
+Flask-SQLAlchemy==3.1.1
+Flask-Migrate==4.0.7
+Flask-Cors==4.0.1
+SQLAlchemy==2.0.45
+PyJWT[crypto]==2.8.0
+msal==1.28.0
+google-genai==0.3.0
+python-dotenv==1.0.1
+# Driver SQLite sudah bawaan stdlib Python (sqlite3) — tidak butuh paket tambahan.
+# Jika suatu saat kembali ke server DB, tambahkan salah satu:
+# psycopg2-binary==2.9.9   (PostgreSQL)
+# pymysql==1.1.1           (MySQL)
